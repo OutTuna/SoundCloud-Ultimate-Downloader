@@ -31,5 +31,5 @@ In future want to add:
 
 1. Mix this loader with artwork ✅
 2. Downloader Audio ✅
-3. RPC for Discord
-4. Make little bit greater UI
+3. RPC for Discord -- 🚫 Tries my best, it's will not work without software which may create a bridge to merge browser and DiscordRPC 
+4. Make little bit greater UI 🚫, maybe sooner...
