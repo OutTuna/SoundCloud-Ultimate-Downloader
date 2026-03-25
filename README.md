@@ -1,5 +1,8 @@
 # SoundCloud Ultimate Downloader
-SoundCloud Avatars, Banners, and tracks downloader
+SoundCloud Avatars, Banners, and tracks downloader V3
+
+
+Full code rework, fresh UI, and simplify
 
 
 Installation Guide:
@@ -18,18 +21,10 @@ Installation Guide:
 
 --------------------
 
-Example Eng Menu:
-
-![image](https://github.com/user-attachments/assets/74df3599-98cb-4170-8a97-6aba9e06deee)
-
-Example Download:
-
-![image](https://github.com/user-attachments/assets/91f949b4-30b0-446e-b710-55e8263125ae)
-
-
 In future want to add:
 
 1. Mix this loader with artwork ✅
 2. Downloader Audio ✅
-3. RPC for Discord -- 🚫 Tries my best, it's will not work without software which may create a bridge to merge browser and DiscordRPC 
-4. Make little bit greater UI 🚫, maybe sooner...
+3. Make little bit greater UI ✅ (after year (XDDDD))
+4. RPC for Discord -- 🚫 Tries my best, it's will not work without software which may create a bridge to merge browser and DiscordRPC 
+
