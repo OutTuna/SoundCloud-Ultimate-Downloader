@@ -11,7 +11,7 @@
 // @grant        none
 // @icon         https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico
 // ==/UserScript==
-
+//typeshi
 (function() {
     'use strict';
 
