@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         SoundCloud Ultimate Downloader Enhanced
+// @name         SoundCloud Ultimate Downloader Full
 // @namespace    http://tampermonkey.net/
 // @version      3
-// @description  Download SoundCloud avatars, banners, covers, tracks, and full albums as ZIP
+// @description  Full version: avatars, banners, covers, tracks and album ZIP download
 // @author       fellfromheaven & maple3142 (thx for downloader)
 // @match        https://soundcloud.com/*
 // @require      https://cdn.jsdelivr.net/npm/web-streams-polyfill@2.0.2/dist/ponyfill.min.js
@@ -11,7 +11,6 @@
 // @grant        none
 // @icon         https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico
 // ==/UserScript==
-//typeshi
 (function() {
     'use strict';
 
@@ -535,10 +534,12 @@
 
     function hook(obj, name, cb, type) {
         const fn = obj[name];
+        if (typeof fn !== 'function') return () => {};
         obj[name] = function (...args) {
             if (type === 'before') cb.apply(this, args);
-            fn.apply(this, args);
+            const result = fn.apply(this, args);
             if (type === 'after') cb.apply(this, args);
+            return result;
         };
         return () => { obj[name] = fn; };
     }
@@ -548,19 +549,30 @@
             const cached = sessionStorage.getItem('sc_client_id');
             if (cached) { resolve(cached); return; }
 
+            let done = false;
+            const finish = (id) => {
+                if (done || !id) return;
+                done = true;
+                sessionStorage.setItem('sc_client_id', id);
+                restore();
+                window.fetch = origFetch;
+                resolve(id);
+            };
+
             const restore = hook(XMLHttpRequest.prototype, 'open', async (method, url) => {
                 const u = new URL(url, document.baseURI);
                 const id = u.searchParams.get('client_id');
-                if (id) { sessionStorage.setItem('sc_client_id', id); restore(); resolve(id); }
+                if (id) finish(id);
             }, 'after');
 
             const origFetch = window.fetch;
             window.fetch = function(...args) {
                 const url = args[0];
-                if (typeof url === 'string' && url.includes('client_id=')) {
-                    const u = new URL(url, document.baseURI);
+                const rawUrl = typeof url === 'string' ? url : url?.url;
+                if (typeof rawUrl === 'string' && rawUrl.includes('client_id=')) {
+                    const u = new URL(rawUrl, document.baseURI);
                     const id = u.searchParams.get('client_id');
-                    if (id && !sessionStorage.getItem('sc_client_id')) { sessionStorage.setItem('sc_client_id', id); resolve(id); }
+                    if (id) finish(id);
                 }
                 return origFetch.apply(this, args);
             };

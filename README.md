@@ -1,30 +1,24 @@
 # SoundCloud Ultimate Downloader
-SoundCloud Avatars, Banners, and tracks downloader V3
+Скрипт для загрузки контента из SoundCloud.
 
+## Файлы
+- `SoundCloud Ultimate Downloader 3.0.js` — **Full** версия.
+- `SoundCloud Ultimate Downloader Lite.js` — **Lightweight** версия.
 
-Full code rework, fresh UI, and simplify
+## Установка
+1. Установите Tampermonkey (или аналог).
+2. Откройте нужный `.js` файл из репозитория или релиза.
+3. Импортируйте файл в Tampermonkey.
+4. Откройте SoundCloud и используйте кнопки загрузки.
 
+## Разница версий (RU)
+### Lightweight (Lite)
+- Легковесный скрипт без внешних библиотек.
+- Скачивание: аватар, баннер, обложка, отдельные треки.
+- Меньше интерфейса и ниже нагрузка на страницу.
 
-Installation Guide:
-
-1. Get TamperMonkey(or smth like tamper) on your browser
-2. Get a .js file with needed localization from release
-3. And drop it in TamperMonkey
-4. Enjoy.
-
-Гайд на установку:
-
-1. Скачать TamperMonkey(или что-то похожее) на ваш браузер
-2. Скачать .js файл с нужной вам локализацией, с раздела Release
-3. Закинуть файл в расширение(TamperMonkey)
-4. Наслаждайтесь
-
---------------------
-
-In future want to add:
-
-1. Mix this loader with artwork ✅
-2. Downloader Audio ✅
-3. Make little bit greater UI ✅ (after year (XDDDD))
-4. RPC for Discord -- 🚫 Tries my best, it's will not work without software which may create a bridge to merge browser and DiscordRPC 
-
+### Full
+- Полная версия с расширенным интерфейсом.
+- Включает всё из Lite.
+- Дополнительно: загрузка альбома/плейлиста в ZIP.
+- Использует внешние библиотеки: `JSZip`, `StreamSaver`, `web-streams-polyfill`.
